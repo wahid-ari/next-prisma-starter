@@ -13,7 +13,7 @@
     "reset": "yarn prisma migrate reset",
     "seed": "yarn prisma db seed",
     "studio": "yarn prisma studio",
-    "vercel-build": "prisma generate && prisma migrate deploy && prisma migrate reset && next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && prisma migrate reset --force && next build",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
