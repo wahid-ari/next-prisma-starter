@@ -13,7 +13,7 @@
     "generate": "yarn prisma generate",
     "seed": "yarn prisma db seed",
     "studio": "yarn prisma studio",
-    "vercel-build": "prisma generate && prisma migrate deploy && prisma db seed && next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
