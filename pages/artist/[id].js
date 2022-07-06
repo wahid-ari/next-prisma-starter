@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const id = context.params.id
   const prisma = new PrismaClient();
   const artist = await prisma.artist.findUnique({
@@ -21,6 +21,21 @@ export async function getServerSideProps(context) {
     }
   };
 }
+
+export async function getStaticPaths() {
+  const prisma = new PrismaClient();
+  const artists = await prisma.artist.findMany();
+
+  return {
+    paths: artists.map((artist) => ({
+      params: {
+        id: artist.id.toString()
+      }
+    })),
+    fallback: false
+  };
+}
+
 
 export default function Home({ artist }) {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

@@ -5,7 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const prisma = new PrismaClient();
   const artists = await prisma.artist.findMany({
     include: { songs: true }

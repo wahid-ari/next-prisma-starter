@@ -4,7 +4,7 @@ import { GlobalContext } from "@utils/GlobalContext";
 import { PrismaClient } from '@prisma/client';
 import Link from 'next/link';
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const id = context.params.id
   const prisma = new PrismaClient();
   const song = await prisma.song.findUnique({
@@ -18,6 +18,20 @@ export async function getServerSideProps(context) {
     props: {
       song
     }
+  };
+}
+
+export async function getStaticPaths() {
+  const prisma = new PrismaClient();
+  const songs = await prisma.song.findMany();
+
+  return {
+    paths: songs.map((song) => ({
+      params: {
+        id: song.id.toString()
+      }
+    })),
+    fallback: false
   };
 }
 
