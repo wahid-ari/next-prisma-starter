@@ -7,13 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "generate": "yarn prisma generate",
     "push": "yarn prisma db push",
     "migrate": "yarn prisma migrate dev --name first-migration",
     "reset": "yarn prisma migrate reset",
-    "generate": "yarn prisma generate",
     "seed": "yarn prisma db seed",
     "studio": "yarn prisma studio",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && prisma migrate reset && next build",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
