@@ -1,5 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const { genre, artist, album, song } = require('./data');
+const { genre, artist, album, song } = require('./data7');
 const prisma = new PrismaClient();
 
 async function main() {
